@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html ng-app="KomarTestApp">
+
+<head>
+    <title>Separating application</title>
+
+    <script src="libraries/angular.js"></script>
+    <link href="libraries/bootstrap.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+
+    <!-- <script src="js/app.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/directive.js"></script>
+    <script src="js/dataProvider.js"></script> -->
+
+    <script src="vendor.js"></script>
+    <script src="app.js"></script>
+    <link href="vendor.css" rel="stylesheet" />
+    <link href="app.css" rel="stylesheet" />
+
+</head>
+
+<body ng-controller="TableCtrl" ng-init="init()">
+    
+    <div class="well">
+        <div class="form-inline">
+            <div class="form-group">
+                <label>Winners: </label>
+                <p class="form-control" ng-bind="getWinnerName()"></p>
+            </div>
+            <button class="btn btn-success" ng-click="getWinner()">New Winner</button>
+
+        </div>
+    </div>
+
+    <h2 class="title">Registration form</h2>
+    <form name="myForm" class="form-horizontal" novalidate ng-submit="addNewUser()">
+
+    <div class="well">
+        <div class="form-group" >
+            <label for="inputName" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputName" placeholder="Name" required  ng-model="data.newUser.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputSurname" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputSurname" placeholder="Surname" required ng-model="data.newUser.surname">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="inputEmail" placeholder="Email" required ng-model="data.newUser.email">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPhone" class="col-sm-2 control-label">Phone</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputPhone" placeholder="+380XXXXXXXXX" ng-model="data.newUser.phone">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default pull-right" ng-disabled="myForm.$invalid">OK</button>
+            </div>
+        </div>
+
+        </div>
+    </form>
+
+    <h2 class="title">Participants</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <theader>
+                <tr>
+                    <td class="header">Name</td>
+                    <td class="header">Surname</td>
+                    <td class="header">Email</td>
+                    <td class="header">Phone</td>
+                </tr>
+            </theader>   
+            <tbody>
+                <tr ng-repeat="user in data.usersArray">
+                    <td>{{user.name}}</td>
+                    <td>{{user.surname}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.phone}}</td>
+                </tr>
+            </tbody>   
+        </table>
+    </div>
+</body>
+</html>

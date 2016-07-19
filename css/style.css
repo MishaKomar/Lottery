@@ -1,0 +1,27 @@
+/* some custom styles */
+
+.header {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.title {
+	text-align: center;
+	font-weight: bold;
+}
+
+form .ng-pristine {
+    border: 1px dotted gray;
+}
+
+form .ng-invalid.ng-dirty {
+    background-color: lightpink;
+}
+
+form .ng-valid.ng-dirty {
+    background-color: lightgreen;
+}
+
+form .ng-invalid-email {
+    color: red;
+}
